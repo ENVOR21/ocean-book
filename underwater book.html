@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ocean Book Slides 🌊</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#a2d2ff, #0077b6);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 12px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Slide */
+.slide {
+    display: none;
+    height: 85vh;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: fade 0.5s ease-in-out;
+}
+
+.slide.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Title */
+h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Text */
+p {
+    font-size: 18px;
+    max-width: 900px;
+    margin: 10px auto;
+    line-height: 1.6;
+}
+
+/* SMALL IMAGE STYLE */
+img {
+    width: 60%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+/* CONTROLS */
+.controls {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    background: white;
+    color: #0077b6;
+    border: none;
+    padding: 12px 18px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #caf0f8;
+}
+
+/* DOTS */
+.dots {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 4px;
+    display: inline-block;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.4;
+}
+
+.dot.active {
+    opacity: 1;
+}
+
+/* BIG END PAGE */
+.end {
+    display: none;
+    height: 85vh;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding-top: 25vh;
+    box-sizing: border-box;
+}
+
+.end.active {
+    display: block;
+}
+
+.end h1 {
+    font-size: 70px;
+    letter-spacing: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">🌊 Ocean & Life Underwater Book 🌊</div>
+
+<!-- SLIDES -->
+
+<div class="slide active">
+    <h2>Welcome to the Ocean 🌊</h2>
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+    <p>The ocean covers more than 70% of Earth and is home to many animals like fish, whales, dolphins, sharks, and turtles.</p>
+</div>
+
+<div class="slide">
+    <h2>Kelp Forests 🌿</h2>
+    <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b">
+    <p>Kelp forests are underwater jungles made of giant seaweed that give food and shelter to many sea animals.</p>
+</div>
+
+<div class="slide">
+    <h2>The Open Ocean 🌊</h2>
+    <img src="https://images.unsplash.com/photo-1545671913-b89ac1b4ac10">
+    <p>The open ocean is the largest habitat on Earth where whales, sharks, dolphins, and tuna travel long distances.</p>
+</div>
+
+<div class="slide">
+    <h2>Ocean Life Connections 🐠</h2>
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+    <p>All ocean life is connected through food chains where every animal depends on another for survival.</p>
+</div>
+
+<!-- END PAGE -->
+<div class="end">
+    <h1>THE END</h1>
+</div>
+
+<!-- DOTS -->
+<div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+    <button onclick="prevSlide()">⬅ Back</button>
+    <button onclick="nextSlide()">Next ➡</button>
+</div>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+let end = document.querySelector(".end");
+let dots = document.querySelectorAll(".dot");
+let index = 0;
+
+function showSlide(i) {
+    slides.forEach(s => s.classList.remove("active"));
+    dots.forEach(d => d.classList.remove("active"));
+    end.classList.remove("active");
+
+    if (i < slides.length) {
+        slides[i].classList.add("active");
+        dots[i].classList.add("active");
+    } else {
+        end.classList.add("active");
+    }
+}
+
+function nextSlide() {
+    if (index < slides.length) {
+        index++;
+        showSlide(index);
+    }
+}
+
+function prevSlide() {
+    if (index > 0) {
+        index--;
+        showSlide(index);
+    }
+}
+</script>
+
+</body>
+</html>
